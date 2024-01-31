@@ -1,0 +1,10 @@
+server:
+  port: 8091
+spring:
+  kafka:
+    producer:
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        "[spring.json.type.mapping]": requests:com.techphile.producers.dto.EventRequest,responses:com.techphile.producers.dto.EventResponse
+    consumer:
+      value-deserializer: org.apache.kafka.common.serialization.ByteArrayDeserializer

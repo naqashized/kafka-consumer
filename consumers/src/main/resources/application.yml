@@ -1,0 +1,20 @@
+server:
+  port: 8092
+spring:
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5442/test
+    username: test
+    password: test
+    initialize: true
+
+  jpa:
+    hibernate:
+      ddl-auto : create
+
+  kafka:
+    producer:
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        "[spring.json.type.mapping]": requests:com.techphile.consumers.dto.EventRequest,responses:com.techphile.consumers.dto.EventResponse
+    consumer:
+      value-deserializer: org.apache.kafka.common.serialization.ByteArrayDeserializer
